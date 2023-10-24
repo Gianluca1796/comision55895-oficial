@@ -1,0 +1,22 @@
+.titulo{
+    color:red
+}
+
+.textoVerde{
+    color: green;
+}
+
+.textoNegrita {
+    font-weight: bold;
+}
+
+.fuenteGrande{
+    font-size: 3rem;
+}
+
+.btnAlquilar{
+    background-color: brown;
+    color: black;
+
+}
+
