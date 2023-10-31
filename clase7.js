@@ -61,7 +61,7 @@ titulos.forEach((elemento) => {
 
 // cargarDom()
 
-
+const carrito = []
 
 const peliculas = [{
         id: 1,
@@ -103,32 +103,46 @@ function cargarPeliculas(){
             <h5 class="card-title">${pelicula.titulo}</h5>
             <p class="card-text">${pelicula.director}</p>
             <p class="card-text">${pelicula.duracion} minutos</p>
-            <a href="#" class="btnAlquilar">¡Alquilar!</a>
+            <button id="${pelicula.titulo}" class="btnAlquilar">¡Alquilar!</button>
         </div>
         </div>`
     
 
         contenedorGeneral.appendChild(contenedorPeli)
 
-
-        const botonesAlquilar = document.querySelectorAll(".btnAlquilar")
-        console.log(botonesAlquilar)
-    
+        const btnAgregar = document.getElementById(pelicula.titulo)
+        btnAgregar.addEventListener("click", () => {
+    agregar(pelicula.titulo)
+        })
     })
 }
 
 cargarPeliculas()
 
-
-const btnAlerta = document.getElementById("btnAlerta")
-const ejemplo = document.getElementById("titulo")
-
-btnAlerta.addEventListener("click", mostrarAlerta)
-ejemplo.addEventListener("click", () => console.log("Clickeaste el H1"))
-
-function mostrarAlerta(){
-    alert("Clickeamos el boton que muestra el alert!")
+function agregar (titulo){
+    const peliEncontrada = peliculas.find((peli) => peli.titulo === titulo)
+    carrito.push(peliEncontrada)
+    console.log(carrito)
 }
+
+
+function eliminarDelCarrito(titulo){
+    const peliAEliminar = carrito.find((peli) => peli.titulo === titulo)
+    carrito.splice(carrito.indexOf(peliAEliminar),1)
+    renderizarCarrito()
+}
+
+
+
+// const btnAlerta = document.getElementById("btnAlerta")
+// const ejemplo = document.getElementById("titulo")
+
+// btnAlerta.addEventListener("click", mostrarAlerta)
+// ejemplo.addEventListener("click", () => console.log("Clickeaste el H1"))
+
+// function mostrarAlerta(){
+//     alert("Clickeamos el boton que muestra el alert!")
+// }
 
 
 //CODIGO JS
@@ -145,32 +159,32 @@ function mostrarAlerta(){
 // })
 
 
-const form = document.getElementById("formulario")
+// const form = document.getElementById("formulario")
 
 
-form.addEventListener("submit", (e) => {
-    crearUsuario(e)
-})
+// form.addEventListener("submit", (e) => {
+//     crearUsuario(e)
+// })
 
 
 
-function crearUsuario(e){
-    e.preventDefault()
+// function crearUsuario(e){
+//     e.preventDefault()
     
-    let inputNombre = document.getElementById("nombre")
-    let inputEdad = document.getElementById("edad")
-    let inputEmail = document.getElementById("email")
+//     let inputNombre = document.getElementById("nombre")
+//     let inputEdad = document.getElementById("edad")
+//     let inputEmail = document.getElementById("email")
 
-    const user = {
-        nombre: inputNombre.value,
-        edad: inputEdad.value,
-        email: inputEmail.value
-    }
+//     const user = {
+//         nombre: inputNombre.value,
+//         edad: inputEdad.value,
+//         email: inputEmail.value
+//     }
 
-    console.log(user)
+//     console.log(user)
 
-    localStorage.setItem("user", JSON.stringify(user))
+//     localStorage.setItem("user", JSON.stringify(user))
 
-    form.reset()
+//     form.reset()
 
-}
+// }
